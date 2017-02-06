@@ -148,7 +148,7 @@ public class LineChartViewGroup extends RelativeLayout implements View.OnClickLi
         canvas.drawColor(Color.argb(0xff, 0xaa, 0x88, 00));
         if (dst.isEmpty()) {
             return;
-        }
+        }//
         canvas.save();
         canvas.scale(1, -1, getWidth() / 2, getHeight() / 2);
         canvas.drawPath(dst, mPaint);
