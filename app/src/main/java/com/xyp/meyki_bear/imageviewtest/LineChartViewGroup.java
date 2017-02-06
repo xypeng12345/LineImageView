@@ -11,7 +11,6 @@ import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
@@ -161,12 +160,9 @@ public class LineChartViewGroup extends RelativeLayout implements View.OnClickLi
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Log.d("yupeng", "触发了点击事件");
                 lastX = event.getX();
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d("yupeng", "触发了移动事件");
-                Log.d("yupeng", "event.getX()-downX" + (event.getX() - lastX));
                 scrollBy((int) -(event.getX() - lastX), 0);
                 lastX = event.getX();
                 break;
