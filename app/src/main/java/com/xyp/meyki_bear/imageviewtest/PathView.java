@@ -62,19 +62,20 @@ public class PathView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.translate(getWidth()/2,getHeight()/2);
-        Path path=new Path();
-        path.addCircle(0,0,200, Path.Direction.CW);
-        PathMeasure pathMeasure=new PathMeasure(path,false);
-        currentValue+=0.005;//计算当前的位置在总长度上的比例
-        if(currentValue>=1){
-            currentValue=0;
+        canvas.translate(getWidth() / 2, getHeight() / 2);
+        Path path = new Path();
+        path.addCircle(0, 0, 200, Path.Direction.CW);
+        PathMeasure pathMeasure = new PathMeasure(path, false);
+        currentValue += 0.005;//计算当前的位置在总长度上的比例
+        if (currentValue >= 1) {
+            currentValue = 0;
         }
         mMatrix.reset(); //重置Matrix
-        pathMeasure.getMatrix(currentValue*pathMeasure.getLength(),mMatrix,PathMeasure.POSITION_MATRIX_FLAG|PathMeasure.TANGENT_MATRIX_FLAG);
-        mMatrix.preTranslate(pos[0]-mBitmap.getWidth()/2,pos[1]-mBitmap.getHeight()/2);//将图标的绘制中心与当前点进行重合
-        canvas.drawPath(path,mDefaultPaint);
-        canvas.drawBitmap(mBitmap,mMatrix,mDefaultPaint);
+        pathMeasure.getMatrix(currentValue * pathMeasure.getLength(), mMatrix, PathMeasure.POSITION_MATRIX_FLAG | PathMeasure.TANGENT_MATRIX_FLAG);
+        mMatrix.preTranslate(pos[0] - mBitmap.getWidth() / 2, pos[1] - mBitmap.getHeight() / 2);//将图标的绘制中心与当前点进行重合
+        canvas.drawPath(path, mDefaultPaint);
+        canvas.drawBitmap(mBitmap, mMatrix, mDefaultPaint);
         invalidate(); //递归调用本身来实现循环动画
     }
 }
+
